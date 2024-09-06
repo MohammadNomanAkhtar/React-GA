@@ -1,7 +1,5 @@
 name: Deploy react-app 
 
-
-
 on:
   push:
     branches:
@@ -17,12 +15,13 @@ jobs:
 
       - name: Check working directory
         run: pwd
+      
       - name: List files in current directory
         run: ls -al
-      - name: Set working directory
-        run: cd /home/ubuntu/React-GA/actions-runner/_work/React-GA/React-GA/react-cicd
-      
+
+      # Add working directory for npm commands
       - name: Build and Deploy
+        working-directory: /home/ubuntu/React-GA/actions-runner/_work/React-GA/React-GA/react-cicd
         run: |
           npm install
           npm run build
